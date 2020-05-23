@@ -34,7 +34,8 @@ public class CounterService {
 			content = new String(Files.readAllBytes(file.toPath()));
 	         
 		} catch (IOException e) {
-			System.out.println("File Not Found");
+			throw new RuntimeException(e.getMessage());
+		   
 		}
 	         
 		
@@ -66,6 +67,8 @@ public class CounterService {
 				countList.add(counter);
 				
 			}
+		
+		
 
 		return countList;
 	}
@@ -127,17 +130,14 @@ public class CounterService {
 	    {
 	        List<Entry<String, Integer>> list = new LinkedList<Entry<String, Integer>>(unsortMap.entrySet());
 
-	        Collections.sort(list, new Comparator<Entry<String, Integer>>()
-	        {
-	            public int compare(Entry<String, Integer> o1,
-	                    Entry<String, Integer> o2)
-	            {
-	               
-	                    return o2.getValue().compareTo(o1.getValue());
 
-	            }
-	        });
+	        Comparator<Entry<String, Integer>> sortingMapComparator = (Entry<String, Integer> o1,
+                    Entry<String, Integer> o2) -> {
+                    	 return o2.getValue().compareTo(o1.getValue());
+                    };
 
+              Collections.sort(list, sortingMapComparator);
+                    
 	        Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
 	        for (Entry<String, Integer> entry : list)
 	        {
