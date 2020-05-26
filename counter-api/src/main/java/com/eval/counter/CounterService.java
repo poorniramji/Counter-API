@@ -48,8 +48,9 @@ public class CounterService {
 	 * This method is used to get the count of the text passed in the Request Body
 	 */
 	
-	public List<CounterVO> getCount(List<String> list) {
+	public Map<String, List<CounterVO>> getCount(List<String> list) {
 		List<CounterVO> countList = new ArrayList<>();
+		Map<String,List<CounterVO>> finalOutput = new HashMap<>();
 		CounterVO counter = null;
 		
 		String actualContent = readInputFile();
@@ -67,10 +68,13 @@ public class CounterService {
 				countList.add(counter);
 				
 			}
+			
+			
+			finalOutput.put("count", countList);
 		
 		
 
-		return countList;
+		return finalOutput;
 	}
 	
 	
@@ -79,9 +83,10 @@ public class CounterService {
 	 * This method returns the sorted Linked Hashmap in key Value pair
 	 */
 	
-	public Map<String, Integer> getMaxCountWords(int topValueNum) {
+	public String getMaxCountWords(int topValueNum) {
 		Map<String, Integer> wordCount = new HashMap<>();
 		Map<String, Integer> resultMap = new LinkedHashMap<>();
+		String finalOutput;
 		
 		String actualContent = readInputFile();
 		String[] words = actualContent.split("[ \n\t\r.,;:!?(){}]");
@@ -118,8 +123,26 @@ public class CounterService {
 				resultMap.put(entry.getKey(), entry.getValue());
 				
 			}
+		 finalOutput =  convertMaptoString(resultMap);
 
-		return resultMap;
+		return finalOutput;
+	}
+	
+	
+	//method to convert the resultMap to String
+	public String convertMaptoString(Map<String, Integer> mapToConvert) {
+		StringBuffer sb = new StringBuffer();
+		String finalOut;
+		
+		 Set<Map.Entry<String, Integer>> entrySet = mapToConvert.entrySet();
+		 for (Map.Entry<String, Integer> entry : entrySet) {
+			 sb.append(entry.getKey()).append("|").append(entry.getValue()).append(" ");
+		 }
+				
+		 finalOut = sb.toString();
+
+		return finalOut;
+		
 	}
 	
 	
