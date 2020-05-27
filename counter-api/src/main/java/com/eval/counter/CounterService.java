@@ -56,15 +56,14 @@ public class CounterService {
 		String actualContent = readInputFile();
 
 			for(String value : list) {
-				counter = new CounterVO();
+				
 				int i = 0;
 				Pattern p = Pattern.compile(value,Pattern.CASE_INSENSITIVE);
 				Matcher m = p.matcher( actualContent );
 				while (m.find()) {
 				    i++;
 				}
-				counter.setName(value);
-				counter.settCount(i);
+				counter = new CounterVO(value,i);
 				countList.add(counter);
 				
 			}
