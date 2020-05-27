@@ -1,6 +1,6 @@
 package com.eval.counter;
 
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -23,10 +23,10 @@ public class CounterController {
 	//Task 1 Text Count
 	@RequestMapping(value = "/search", method = RequestMethod.POST, 
 		    consumes = "application/json",produces = "application/json")
-	public Map<String, List<CounterVO>> searchCount(@RequestBody Map<String,List<String>> searchInput) {
-		Map<String,List<CounterVO>> finalOutputVal = null;
+		public Map<String, List<CounterVO>> searchCount(@RequestBody Map<String,List<String>> searchInput) {
+			Map<String,List<CounterVO>> finalOutputVal = null;
 	
-		List<String> inputVals = searchInput.get("searchText");
+			List<String> inputVals = searchInput.get("searchText");
 		
 		
 		if(inputVals.size() != 0) {

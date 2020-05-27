@@ -39,14 +39,15 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	
-    	http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    	
-        http.authorizeRequests()
+    	http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().
+    authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic().authenticationEntryPoint(authenticationEntryPoint)
                 .and()
                 .csrf().disable();
+        
+        //antMatchers("/auth/*").hasAnyAuthority("ADMIN", "USER")
     }
     
 
