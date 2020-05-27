@@ -49,10 +49,7 @@ public class CounterControllerTest {
 	{
 		list = new ArrayList<>();
 		list.add("Duis");
-		 counterVO1 = new CounterVO();
-		 counterVO1.setName("Duis");
-		 counterVO1.settCount(11);
-		 counterVO1.settCount(8);
+		 counterVO1 = new CounterVO("Duis",11);
 		 finalCount = new ArrayList<>();
 		 finalCount.add(counterVO1);
 		 finalOutput = new HashMap<>();
