@@ -75,7 +75,7 @@ public class CounterControllerTest {
 		MockHttpServletResponse response = result.getResponse();
 		int responseCode = response.getStatus();
 		 assertNotNull(response);
-		 assertEquals(200, responseCode);
+		  assertEquals(HttpStatus.OK.value(), responseCode);
 		
 	
 	}
@@ -94,7 +94,7 @@ public class CounterControllerTest {
 		MockHttpServletResponse response = result.getResponse();
 		int responseCode = response.getStatus();
 		 assertNotNull(response);
-		 assertEquals(200, responseCode);
+		  assertEquals(HttpStatus.OK.value(), responseCode);
 		
 		
 
