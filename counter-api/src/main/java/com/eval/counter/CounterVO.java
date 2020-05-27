@@ -10,6 +10,15 @@ public class CounterVO {
 	Integer tCount;
 	
 	
+	public CounterVO() {
+		
+	}
+	
+	public CounterVO(String name, Integer tCount) {
+		super();
+		this.name = name;
+		this.tCount = tCount;
+	}
 	/**
 	 * @return the name
 	 */
